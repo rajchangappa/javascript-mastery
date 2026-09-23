@@ -41,7 +41,22 @@ console.log(firstCounter()); // 1
 console.log(firstCounter()); // 2
 ```
 
-### 3. Context Compass: `this`
+### 3. Lift-Off Lab: Hoisting
+
+Hoisting describes how JavaScript processes declarations before it runs the code in a scope. Function declarations can be called before they appear in the source. `var` declarations are initialized with `undefined`, but `let` and `const` are not initialized until execution reaches their declaration; accessing them earlier causes a `ReferenceError` because they are in the temporal dead zone. Hoisting does not move assignments or initial values to the top.
+
+```js
+sayHello(); // Hello
+
+function sayHello() {
+  console.log("Hello");
+}
+
+console.log(typeof value); // undefined
+var value = 42;
+```
+
+### 4. Context Compass: `this`
 
 `this` is determined mainly by how a function is called, not where the function was defined. In `object.method()`, `this` refers to `object`; with `new`, it refers to the new instance; and with `call`, `apply`, or `bind`, it can be chosen explicitly. Arrow functions do not create their own `this`; they inherit it from the surrounding scope. Avoid relying on an accidental call style when the receiver matters.
 
@@ -58,7 +73,7 @@ const greet = user.greet;
 greet(); // undefined in strict mode
 ```
 
-### 4. Immediate Workshop: IIFEs
+### 5. Immediate Workshop: IIFEs
 
 An Immediately Invoked Function Expression, or IIFE, is a function expression that is created and called immediately. It creates a private scope without adding its variables to the surrounding scope. IIFEs were commonly used for encapsulation before modules became standard. They still appear in scripts that need one-time setup or isolated initialization.
 
@@ -72,7 +87,7 @@ console.log(settings.apiUrl);
 // apiUrl is not available as a top-level variable.
 ```
 
-### 5. Delegation Desk: Prototypal Inheritance
+### 6. Delegation Desk: Prototypal Inheritance
 
 In prototypal inheritance, an object can delegate property lookup to another object. `Object.create` makes this relationship explicit, while constructor functions can share methods through their `prototype` property. The child object does not copy inherited methods; it looks them up when needed. Own properties still take precedence over properties found on the prototype.
 
@@ -88,7 +103,7 @@ dog.speak = () => "woof";
 console.log(dog.speak()); // woof
 ```
 
-### 6. Lookup Ladder: The Prototype Chain
+### 7. Lookup Ladder: The Prototype Chain
 
 When JavaScript evaluates `object.property`, it first checks the object itself. If the property is missing, it follows the internal prototype link, commonly observed with `Object.getPrototypeOf`, and continues until it finds the property or reaches `null`. This sequence is the prototype chain. Methods such as `toString` are available because ordinary objects eventually delegate to `Object.prototype`.
 
@@ -102,7 +117,7 @@ console.log(Object.hasOwn(child, "kind")); // false
 console.log(Object.getPrototypeOf(child) === base); // true
 ```
 
-### 7. Class Understudy: How JavaScript Classes Work Under the Hood
+### 8. Class Understudy: How JavaScript Classes Work Under the Hood
 
 A JavaScript `class` is syntax for creating constructor behavior and configuring prototypes; it does not replace the prototype system. Methods written in a class body are placed on the constructor's `prototype`, so instances share one method rather than receiving a separate copy. `extends` links the subclass prototype to the parent prototype, and `super` delegates to the parent constructor or method.
 
