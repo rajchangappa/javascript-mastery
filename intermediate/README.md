@@ -1,4 +1,4 @@
-# JavaScript Intermediate: The Machinery Behind the Syntax
+  # JavaScript Intermediate: The Machinery Behind the Syntax
 
 ## A Small Map of Hidden Behavior
 
